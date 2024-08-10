@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Store Revenue Prediction</title>
+    <style>
+        body {
+            background-image: url('/static/background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Google Store Revenue Prediction</h1>
+        <form method="post">
+            <div class="form-group">
+                <label for="hits">Hits</label>
+                <input type="number" id="hits" name="hits" value="0" min="0">
+            </div>
+            <div class="form-group">
+                <label for="pageviews">Pageviews</label>
+                <input type="number" id="pageviews" name="pageviews" value="0" min="0">
+            </div>
+            <div class="form-group">
+                <label for="visitNumber">Visit Number</label>
+                <input type="number" id="visitNumber" name="visitNumber" value="0" min="0">
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" name="country">
+                    {% for country in countries %}
+                    <option value="{{ country }}">{{ country }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="continent">Continent</label>
+                <select id="continent" name="continent">
+                    {% for continent in continents %}
+                    <option value="{{ continent }}">{{ continent }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="browser">Browser</label>
+                <select id="browser" name="browser">
+                    {% for browser in browsers %}
+                    <option value="{{ browser }}">{{ browser }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="subContinent">Sub Continent</label>
+                <select id="subContinent" name="subContinent">
+                    {% for subContinent in subcontinents %}
+                    <option value="{{ subContinent }}">{{ subContinent }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="operatingSystem">Operating System</label>
+                <select id="operatingSystem" name="operatingSystem">
+                    {% for os in operating_systems %}
+                    <option value="{{ os }}">{{ os }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="medium">Medium</label>
+                <select id="medium" name="medium">
+                    {% for medium in mediums %}
+                    <option value="{{ medium }}">{{ medium }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        {% if predicted_revenue %}
+        <h2>Predicted Revenue: {{ predicted_revenue }}</h2>
+        {% endif %}
+        {% if error %}
+        <h2>Error: {{ error }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>

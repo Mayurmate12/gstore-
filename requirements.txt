@@ -1,0 +1,8 @@
+pandas==2.2.2
+numpy==1.26.4
+scipy==1.13.0
+scikit-learn==1.4.2
+Flask==3.0.3
+streamlit==1.37.0
+lightgbm==4.5.0
+mysql-connector-python==8.4.0
